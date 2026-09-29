@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 // TODO: クライアント確認後、実績値に差し替え
 const STATS = {
   inexperienced: { label: "未経験スタート", num: 80, unit: "%", note: "入社時に業界未経験" },
-  athletes: { label: "体育会系出身", num: 6, unit: "割超", note: "元運動部が活躍中" },
   license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
 } as const;
 
@@ -458,7 +457,7 @@ export default function Home() {
           <h1 className="hero__copy">
             甲子園は終わった。
             <br />
-            <span className="line2 txt-bg txt-bg_brand">お前の全力は、まだだ。</span>
+            <span className="line2 txt-bg txt-bg_brand">その全力は、まだだ。</span>
           </h1>
           <p className="hero__sub">
             引退したあの日から、本気になれるものを探しているなら。
@@ -471,13 +470,6 @@ export default function Home() {
               <p className="hbadge__num en">
                 {STATS.inexperienced.num}
                 <small>{STATS.inexperienced.unit}</small>
-              </p>
-            </div>
-            <div className="hbadge">
-              <p className="hbadge__label">{STATS.athletes.label}</p>
-              <p className="hbadge__num en">
-                {STATS.athletes.num}
-                <small>{STATS.athletes.unit}</small>
               </p>
             </div>
             <div className="hbadge">
