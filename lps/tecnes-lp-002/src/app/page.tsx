@@ -185,26 +185,29 @@ const reasons = [
   {
     no: "01",
     vlabel: "REPETITION.",
+    icon: "repeat" as IconName,
     eq: "反復練習 ＝ 技術習得",
     title: "「素振り」できたヤツは、\n現場でも伸びる。",
     highlight: "素振り",
-    txt: "電気設備の技術は、才能ではなく反復で身につく。毎日の素振りでスイングを固めたように、一つひとつの作業を繰り返して“体で覚える”。コツコツ続けられる元野球部は、未経験からでも確実にレベルアップしていく。",
+    txt: "毎日の反復で、未経験でも確実に上達する。",
   },
   {
     no: "02",
     vlabel: "TEAMWORK.",
+    icon: "team" as IconName,
     eq: "チームプレー ＝ 班の連携",
     title: "現場は、\n9人で守る「チーム戦」。",
     highlight: "チーム戦",
-    txt: "TECNESの現場は一人では回らない。役割を分担し、声を掛け合い、班（チーム）で一つの工事を完成させる。ポジションを守り、カバーし合う——グラウンドで培った連携力が、そのまま武器になる。",
+    txt: "一人じゃない。仲間と連携して現場を完成させる。",
   },
   {
     no: "03",
     vlabel: "GUTS.",
+    icon: "guts" as IconName,
     eq: "根性・体力 ＝ 現場力",
     title: "鍛えた体と粘りは、\nここで“戦力”になる。",
     highlight: "戦力",
-    txt: "暑さ寒さ、最後まで走り切る粘り強さ。厳しい練習を耐え抜いた経験は、現場で必ず活きる。頑張りが「気合」で終わらず、資格・技術・給与という結果に変わっていく場所だ。",
+    txt: "鍛えた体力と粘り強さが、現場の武器になる。",
   },
 ];
 
@@ -220,32 +223,36 @@ const steps = [
   {
     phase: "1年目",
     no: "01",
+    icon: "book" as IconName,
     title: "素振りの年",
-    txt: "先輩について現場の基本を覚える。道具の名前、安全のルール、体の使い方。分からなくて当たり前。まずは全力でついていく。",
+    txt: "道具の名前やルールを、先輩と一緒に覚える。",
     tag: "OJT・基礎",
     goal: false,
   },
   {
     phase: "2〜3年目",
     no: "02",
+    icon: "badge" as IconName,
     title: "スタメン定着",
-    txt: "任される作業が増え、資格も取得。自分のポジションを守れるように。後輩も入ってきて、教える側の一歩を踏み出す。",
+    txt: "資格を取得し、任される仕事が増えていく。",
     tag: "資格取得支援",
     goal: false,
   },
   {
     phase: "4〜6年目",
     no: "03",
+    icon: "flag" as IconName,
     title: "エース格へ",
-    txt: "現場の中心として判断を任される。班のメンバーをまとめ、段取りを組む。努力が役職・給与にはっきり反映される。",
+    txt: "現場の中心として、班をまとめる存在に。",
     tag: "リーダー候補",
     goal: false,
   },
   {
     phase: "その先",
     no: "04",
+    icon: "crown" as IconName,
     title: "監督（職長）",
-    txt: "現場全体を指揮する職長・管理者へ。後進を育て、会社を背負う存在に。第二の野球人生の“優勝”を、ここで掴む。",
+    txt: "現場全体を指揮し、後輩を育てる立場へ。",
     tag: "職長・管理職",
     goal: true,
   },
@@ -254,26 +261,30 @@ const steps = [
 const joinSteps = [
   {
     no: "01",
+    icon: "chat" as IconName,
     title: "エントリー",
-    txt: "フォームから30秒で完了。履歴書はまだ不要です。",
+    txt: "LINEから30秒で完了。履歴書は不要です。",
     img: "/images/join-01.jpg",
   },
   {
     no: "02",
+    icon: "video" as IconName,
     title: "カジュアル面談",
-    txt: "私服OK・オンラインOK。仕事内容や給与のリアルを全部話します。",
+    txt: "私服OK・オンラインOK。気軽に話すだけ。",
     img: "/images/join-02.jpg",
   },
   {
     no: "03",
+    icon: "helmet" as IconName,
     title: "現場見学（希望者のみ）",
-    txt: "実際の現場と先輩の働き方を見てから決められます。",
+    txt: "実際の現場と働き方を見てから決められます。",
     img: "/images/join-03.jpg",
   },
   {
     no: "04",
+    icon: "star" as IconName,
     title: "内定・入社",
-    txt: "最短2週間。入社日は相談OK。野球で言う“入団”です。",
+    txt: "最短2週間。入社日は相談OKです。",
     img: "/images/join-04.jpg",
   },
 ];
@@ -281,23 +292,23 @@ const joinSteps = [
 const faqs = [
   {
     q: "電気の知識ゼロ、まったくの未経験でも大丈夫ですか？",
-    a: "問題ありません。社員の約8割が未経験スタートです。野球でいう“素振り”のように、先輩がマンツーマンで基礎から教えます。学歴も不問。大切なのは、素直さと最後までやり切る姿勢です。",
+    a: "大丈夫です。社員の8割が未経験スタート。先輩が基礎から教えます。",
   },
   {
     q: "体力や上下関係は、正直きついですか？",
-    a: "現場仕事なので体力は使いますが、厳しい部活を経験した皆さんなら心配いりません。むしろ体力・礼儀・根性は大きな武器になります。理不尽なシゴキではなく、成長のための指導です。",
+    a: "体力は使いますが、厳しい部活経験者なら問題なし。理不尽な指導はありません。",
   },
   {
     q: "頑張りは、ちゃんと評価されますか？",
-    a: "はい。資格取得で手当が増え、現場での実力が役職・昇給に直結します。年功序列だけでなく、「やった分だけ返ってくる」評価制度。試合で結果を出せば認められる——それと同じです。",
+    a: "はい。資格取得や実力が、給与・昇給に直結します。",
   },
   {
     q: "給与や休みは、実際どうなんですか？",
-    a: "カジュアル面談で、モデル年収・残業・休日の実データをすべてお見せします。入ってから「聞いてない」が一番不幸なので、先に全部話すのがTECNESのルールです。",
+    a: "カジュアル面談で、年収・休日のリアルをすべてお伝えします。",
   },
   {
     q: "野球経験しかなくても、将来キャリアは築けますか？",
-    a: "築けます。1年目の“素振り”から、スタメン、エース、そして現場を率いる職長（監督）へ。多くの先輩が未経験から現場のリーダーになっています。第二のキャリアの主役はあなたです。",
+    a: "築けます。未経験から現場を率いる職長になった先輩も多数います。",
   },
 ];
 
@@ -340,6 +351,131 @@ function highlightLine(line: string, word: string, cls: string) {
     </>
   );
 }
+
+/* ------------------------------------------------------------------
+   アイコン（文章の代わりに内容を視覚化するシンプルな線画アイコン）
+------------------------------------------------------------------ */
+type IconName =
+  | "repeat"
+  | "team"
+  | "guts"
+  | "book"
+  | "badge"
+  | "flag"
+  | "crown"
+  | "chat"
+  | "video"
+  | "helmet"
+  | "star";
+
+function Icon({ name }: { name: IconName }) {
+  switch (name) {
+    case "repeat":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M17 2l4 4-4 4" />
+          <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+          <path d="M7 22l-4-4 4-4" />
+          <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+        </svg>
+      );
+    case "team":
+      return (
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="8" r="3.2" />
+          <path d="M2.5 21v-1.5a4.5 4.5 0 0 1 4.5-4.5h4a4.5 4.5 0 0 1 4.5 4.5V21" />
+          <circle cx="17.5" cy="8.5" r="2.4" />
+          <path d="M16 13.3a4 4 0 0 1 5.5 3.7V21" />
+        </svg>
+      );
+    case "guts":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M12 21c-4-1.2-7-4.4-7-9 0-3 1.8-4.6 3-6.5.2 1.6 1 2.6 2 3.3-.3-2 .2-4 2-6.3 1 2.6 2.4 3.8 3.8 5.2C17.3 9.1 19 10.8 19 13.3 19 17 16 20 12 21Z" />
+          <path d="M12 21c1.8-.6 3-2 3-3.8 0-1.5-.8-2.3-1.5-3.2" />
+        </svg>
+      );
+    case "book":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4.8A2.8 2.8 0 0 1 6.8 2H20v17H6.8A2.8 2.8 0 0 0 4 21.8V4.8Z" />
+          <path d="M4 19A2.8 2.8 0 0 1 6.8 16.2H20" />
+        </svg>
+      );
+    case "badge":
+      return (
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="8.5" r="5" />
+          <path d="M8.3 12.8 6.5 22l5.5-3.2 5.5 3.2-1.8-9.2" />
+        </svg>
+      );
+    case "flag":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M5 21V3" />
+          <path d="M5 4h13l-3.2 4.5L18 13H5" />
+        </svg>
+      );
+    case "crown":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M3 18h18l-1.6-9-4.9 4.3L12 6l-2.5 7.3L4.6 9 3 18Z" />
+          <path d="M3 21h18" />
+        </svg>
+      );
+    case "chat":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 9 9 0 0 1-3.6-.7L3 21l1.4-5.1a8.4 8.4 0 0 1 .6-10A8.4 8.4 0 0 1 21 11.5Z" />
+        </svg>
+      );
+    case "video":
+      return (
+        <svg viewBox="0 0 24 24">
+          <rect x="2.5" y="6" width="13" height="12" rx="1.5" />
+          <path d="M15.5 10.5 21.5 7v10l-6-3.5" />
+        </svg>
+      );
+    case "helmet":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="M3.5 16a8.5 8.5 0 0 1 17 0" />
+          <path d="M2 16h20" />
+          <path d="M12 16V8" />
+        </svg>
+      );
+    case "star":
+      return (
+        <svg viewBox="0 0 24 24">
+          <path d="m12 2.5 2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7Z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+function IconChip({
+  name,
+  onDark = false,
+  small = false,
+}: {
+  name: IconName;
+  onDark?: boolean;
+  small?: boolean;
+}) {
+  return (
+    <span
+      className={`icon-chip${onDark ? " icon-chip_on-dark" : ""}${
+        small ? " icon-chip_sm" : ""
+      }`}
+      aria-hidden="true"
+    >
+      <Icon name={name} />
+    </span>
+  );
+}
+
 
 /* ------------------------------------------------------------------
    page
@@ -573,6 +709,7 @@ export default function Home() {
                 key={r.no}
                 style={{ animationDelay: `${i * 80}ms` }}
               >
+                <IconChip name={r.icon} />
                 <span className="sec-no en">{r.no}</span>
                 <p className="rblock__eq">{r.eq}</p>
                 <h3 className="rblock__title">
@@ -618,10 +755,7 @@ export default function Home() {
                 言うなれば、<span className="txt-bg txt-bg_brand">“インフラの守備”</span>だ。
               </h3>
               <p className="work__lead">
-                TECNESの仕事は、建物や設備の電気工事・保守。
-                スイッチひとつで明かりが点き、機械が動く——その当たり前を、
-                現場でつくっているのが私たちだ。専門用語は入社後に覚えればいい。
-                まずは、野球で言うところの“各ポジション”をイメージしてほしい。
+                電気の仕事を、野球の“ポジション”に例えると——
               </p>
 
               <div className="translate">
@@ -655,8 +789,7 @@ export default function Home() {
             素振りから、{highlightLine("監督へ。", "監督", "txt-bg")}
           </h2>
           <p className="lead reveal">
-            入社1年目の“素振り”から、現場を率いる“監督（職長）”まで。
-            一段ずつ、確実に。あなたの第二の野球人生の道筋です。
+            1年目から監督（職長）まで、一段ずつ確実にレベルアップ。
           </p>
 
           <div className="step__timeline">
@@ -668,7 +801,10 @@ export default function Home() {
               >
                 <div className="scol__dot" aria-hidden="true" />
                 <p className="scol__phase">{s.phase}</p>
-                <div className="scol__no en">{s.no}</div>
+                <div className="scol__head">
+                  <div className="scol__no en">{s.no}</div>
+                  <IconChip name={s.icon} small />
+                </div>
                 <h3 className="scol__title">{s.title}</h3>
                 <p className="scol__txt">{s.txt}</p>
                 <span className="scol__tag">{s.tag}</span>
@@ -707,7 +843,10 @@ export default function Home() {
                   animationDelay: `${i * 80}ms`,
                 }}
               >
-                <p className="jcard__no en">{s.no}</p>
+                <div className="jcard__head">
+                  <p className="jcard__no en">{s.no}</p>
+                  <IconChip name={s.icon} small />
+                </div>
                 <h3 className="jcard__title">{s.title}</h3>
                 <p className="jcard__txt">{s.txt}</p>
               </div>

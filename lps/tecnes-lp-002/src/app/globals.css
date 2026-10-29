@@ -48,6 +48,7 @@ html {
 
 body {
   font-family: var(--font-jp), "Zen Kaku Gothic New", sans-serif;
+  font-weight: 500;
   color: var(--tc-text);
   background: var(--tc-white);
   line-height: 1.8;
@@ -465,67 +466,24 @@ a {
   }
 }
 
-/* F. ワイプアニメーション */
-.reveal,
-.reveal-v {
-  position: relative;
-  z-index: 2;
-  display: block;
-  overflow: hidden;
-}
+/* F. スクロールフェードイン */
 .js-anim .reveal,
 .js-anim .reveal-v {
-  visibility: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .js-anim .reveal.show,
 .js-anim .reveal-v.show {
-  visibility: visible;
-}
-.js-anim .reveal.show::after,
-.js-anim .reveal-v.show::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--tc-purple);
-  animation: 0.6s linear 0s 1 forwards;
-}
-.js-anim .reveal.show::after {
-  animation-name: wipe-x;
-}
-.js-anim .reveal-v.show::after {
-  animation-name: wipe-y;
-}
-@keyframes wipe-x {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-@keyframes wipe-y {
-  0% {
-    transform: translateY(100%);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+  opacity: 1;
+  transform: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .js-anim .reveal,
   .js-anim .reveal-v {
-    visibility: visible;
-  }
-  .js-anim .reveal.show::after,
-  .js-anim .reveal-v.show::after {
-    animation: none;
-    display: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
@@ -1161,6 +1119,41 @@ a {
 .rblock:last-child {
   padding-right: 0;
 }
+/* アイコンチップ（反復練習・チームプレー等を視覚化） */
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  background: var(--tc-tint);
+  color: var(--tc-purple);
+  margin-bottom: 16px;
+}
+.icon-chip svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-chip_on-dark {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.icon-chip_sm {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0;
+}
+.icon-chip_sm svg {
+  width: 22px;
+  height: 22px;
+}
+
 .rblock__eq {
   display: flex;
   align-items: center;
@@ -1402,8 +1395,14 @@ a {
   font-weight: 500;
   color: var(--tc-purple);
 }
-.scol__no {
+.scol__head {
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.scol__no {
   font-size: 48px;
   color: rgba(26, 18, 54, 0.18);
 }
@@ -1498,8 +1497,13 @@ a {
 .jcard:hover::before {
   background: rgba(255, 255, 255, 0.78);
 }
-.jcard__no {
+.jcard__head {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.jcard__no {
   font-size: 40px;
   color: var(--tc-purple-light);
 }
