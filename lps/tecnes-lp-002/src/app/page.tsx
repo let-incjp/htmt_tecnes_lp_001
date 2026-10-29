@@ -588,7 +588,7 @@ export default function Home() {
 
         <div className="hero__inner">
           <div className="hero__tag">
-            <span>高卒・大卒・既卒OK｜元野球部・体育会系 歓迎</span>
+            <span>元野球部特化採用中！</span>
           </div>
           <h1 className="hero__copy">
             甲子園は終わった。
