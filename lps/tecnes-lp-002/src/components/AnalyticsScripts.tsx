@@ -1,10 +1,13 @@
 import Script from "next/script";
+import { GA4_MEASUREMENT_ID as GA4_ID } from "@/lib/constants";
 
 // 計測ベースコードをサイト全体（中間ページ含む）に設置する。
-// 各IDはVercelの環境変数に入れるまでは未設定扱いとなり、何も出力しない。
+// TikTok/Meta/ClarityのIDはVercelの環境変数に入れるまでは未設定扱いとなり、
+// 何も出力しない。GA4は発行済みのため既定値を直接設定している
+// （NEXT_PUBLIC_GA4_IDを設定すればそちらを優先する）。
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_ID;
+const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_ID || GA4_ID;
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export default function AnalyticsScripts() {

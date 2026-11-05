@@ -4,3 +4,6 @@ export const LINE_URL =
   "https://lmasters.aigrowthx.pro/r/cmszgyugv000511my7b7cz5z2";
 
 export const LINE_INTERMEDIATE_PATH = "/line-thanks/";
+
+// GA4 測定ID（ストリーム: tecnes-lp-002 / LET作成 野球部特化）
+export const GA4_MEASUREMENT_ID = "G-XFM6VMMG9D";
