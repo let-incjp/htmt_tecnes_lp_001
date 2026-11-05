@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Zen_Kaku_Gothic_New, Montserrat } from "next/font/google";
+import AnalyticsScripts from "@/components/AnalyticsScripts";
 import "./globals.css";
 
 const jp = Zen_Kaku_Gothic_New({
@@ -37,6 +38,7 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js-anim');",
           }}
         />
+        <AnalyticsScripts />
         {children}
       </body>
     </html>

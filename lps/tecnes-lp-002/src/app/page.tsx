@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LINE_INTERMEDIATE_PATH } from "@/lib/constants";
 
 /* ------------------------------------------------------------------
    constants
@@ -12,7 +13,6 @@ const STATS = {
   license: { label: "資格取得支援", num: 100, unit: "%", note: "受験費用を会社負担" },
 } as const;
 
-const LINE_URL = "https://lmasters.aigrowthx.pro/r/cmszgyugv000511my7b7cz5z2";
 const CTA_MICRO = "履歴書不要・私服OK／質問だけでも大歓迎";
 
 const NAV_LINKS = [
@@ -155,7 +155,7 @@ function CtaBand() {
         <h2 className="band__title reveal">次の本気、はじめよう。</h2>
         <div className="cta-stack">
           <a
-            href={LINE_URL}
+            href={LINE_INTERMEDIATE_PATH}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn_line btn_lg"
@@ -503,7 +503,7 @@ export default function Home() {
           </nav>
           <div className="siteheader__actions">
             <a
-              href={LINE_URL}
+              href={LINE_INTERMEDIATE_PATH}
               target="_blank"
               rel="noopener noreferrer"
               className="siteheader__cta en"
@@ -532,7 +532,7 @@ export default function Home() {
           </a>
         ))}
         <a
-          href={LINE_URL}
+          href={LINE_INTERMEDIATE_PATH}
           className="btn btn_line mobilemenu__cta"
           onClick={() => setMenuOpen(false)}
           target="_blank"
@@ -546,7 +546,7 @@ export default function Home() {
       <aside className="floatbanner" aria-label="お問い合わせ">
         <p className="floatbanner__ttl">公式LINEで相談</p>
         <a
-          href={LINE_URL}
+          href={LINE_INTERMEDIATE_PATH}
           target="_blank"
           rel="noopener noreferrer"
           className="floatbanner__btn"
@@ -620,7 +620,7 @@ export default function Home() {
           <div className="hero__actions">
             <div className="cta-stack">
               <a
-                href={LINE_URL}
+                href={LINE_INTERMEDIATE_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn_line btn_lg"
@@ -931,7 +931,7 @@ export default function Home() {
               </span>
               <div className="cta-stack">
                 <a
-                  href={LINE_URL}
+                  href={LINE_INTERMEDIATE_PATH}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn_line btn_lg"
@@ -953,7 +953,7 @@ export default function Home() {
                 質問だけでも大歓迎。まずは気軽にメッセージしてください。
               </p>
               <a
-                href={LINE_URL}
+                href={LINE_INTERMEDIATE_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn_line line-card__btn"
@@ -985,7 +985,7 @@ export default function Home() {
 
       {/* SP下部固定CTA */}
       <a
-        href={LINE_URL}
+        href={LINE_INTERMEDIATE_PATH}
         target="_blank"
         rel="noopener noreferrer"
         className={`bottombar${stickyShow ? " is-show" : ""}`}
