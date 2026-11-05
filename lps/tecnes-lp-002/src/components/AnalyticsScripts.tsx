@@ -2,14 +2,16 @@ import Script from "next/script";
 import {
   GA4_MEASUREMENT_ID as GA4_ID,
   TIKTOK_PIXEL_ID as TIKTOK_ID,
+  META_PIXEL_ID as META_ID,
 } from "@/lib/constants";
 
 // 計測ベースコードをサイト全体（中間ページ含む）に設置する。
-// Meta/ClarityのIDはVercelの環境変数に入れるまでは未設定扱いとなり、
-// 何も出力しない。TikTok/GA4は発行済みのため既定値を直接設定している
-// （NEXT_PUBLIC_TIKTOK_PIXEL_ID / NEXT_PUBLIC_GA4_ID を設定すればそちらを優先する）。
+// ClarityのIDはVercelの環境変数に入れるまでは未設定扱いとなり、
+// 何も出力しない。TikTok/Meta/GA4は発行済みのため既定値を直接設定している
+// （NEXT_PUBLIC_TIKTOK_PIXEL_ID / NEXT_PUBLIC_META_PIXEL_ID / NEXT_PUBLIC_GA4_ID
+// を設定すればそちらを優先する）。
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID || TIKTOK_ID;
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || META_ID;
 const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_ID || GA4_ID;
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
@@ -43,6 +45,18 @@ fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');
           `}
         </Script>
+      )}
+      {META_PIXEL_ID && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <noscript>
+          <img
+            height={1}
+            width={1}
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
       )}
 
       {GA4_MEASUREMENT_ID && (
