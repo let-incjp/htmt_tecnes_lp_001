@@ -1599,6 +1599,52 @@ details[open] .qa__icon {
 }
 
 /* =========================================================
+   募集要項（タブ切り替え）
+   ========================================================= */
+.recruit {
+  position: relative;
+  background: var(--tc-paper);
+}
+.recruit__tabs {
+  display: flex;
+  gap: 12px;
+  margin: 36px 0 28px;
+}
+.recruit__tab {
+  flex: 1 1 0;
+  padding: 16px 20px;
+  background: var(--tc-white);
+  border: 2px solid var(--tc-line);
+  color: var(--tc-ink);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.recruit__tab:hover:not(.is-active) {
+  border-color: var(--tc-purple-light);
+  color: var(--tc-purple);
+}
+.recruit__tab.is-active {
+  background: var(--tc-purple);
+  border-color: var(--tc-purple);
+  color: #fff;
+}
+.recruit__line {
+  display: block;
+}
+.recruit__line + .recruit__line {
+  margin-top: 4px;
+}
+@media (max-width: 600px) {
+  .recruit__tabs {
+    flex-direction: column;
+  }
+}
+
+/* =========================================================
    COMPANY
    ========================================================= */
 .company {

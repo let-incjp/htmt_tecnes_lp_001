@@ -20,6 +20,7 @@ const NAV_LINKS = [
   { href: "#work", label: "仕事内容" },
   { href: "#step", label: "成長ロードマップ" },
   { href: "#join", label: "入社の流れ" },
+  { href: "#recruit", label: "募集要項" },
   { href: "#faq", label: "よくある質問" },
 ];
 
@@ -28,6 +29,7 @@ const FOOT_LINKS = [
   { href: "#work", label: "仕事内容" },
   { href: "#step", label: "成長ロードマップ" },
   { href: "#join", label: "入社までの流れ" },
+  { href: "#recruit", label: "募集要項" },
   { href: "#faq", label: "よくある質問" },
   { href: "#company", label: "運営会社" },
 ];
@@ -170,6 +172,57 @@ function CtaBand() {
 }
 
 /* ------------------------------------------------------------------
+   募集要項（タブ切り替え：電気工事士 ⇔ 営業）
+------------------------------------------------------------------ */
+function RecruitSection() {
+  const [active, setActive] = useState<(typeof recruitJobs)[number]["key"]>(
+    "engineer"
+  );
+  const job = recruitJobs.find((j) => j.key === active) ?? recruitJobs[0];
+
+  return (
+    <section className="section recruit slant-band" id="recruit">
+      <div className="inner-narrow">
+        <SecTtl en="JOB REQUIREMENTS" jp="募集要項" align="left" />
+        <h2 className="big-ttl reveal">募集要項</h2>
+
+        <div className="recruit__tabs reveal" role="tablist" aria-label="募集職種">
+          {recruitJobs.map((j) => (
+            <button
+              key={j.key}
+              type="button"
+              role="tab"
+              aria-selected={active === j.key}
+              className={`recruit__tab${active === j.key ? " is-active" : ""}`}
+              onClick={() => setActive(j.key)}
+            >
+              {j.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="ctable recruit__table reveal">
+          <dl>
+            {job.rows.map((row) => (
+              <div key={row.label} style={{ display: "contents" }}>
+                <dt>{row.label}</dt>
+                <dd>
+                  {row.value.split("\n").map((line, i) => (
+                    <span className="recruit__line" key={i}>
+                      {line}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------
    data
 ------------------------------------------------------------------ */
 const empathy = [
@@ -288,6 +341,68 @@ const joinSteps = [
     img: "/images/join-04.jpg",
   },
 ];
+
+// 募集要項（出典: クライアント提供の職種別募集要項）
+const recruitJobs = [
+  {
+    key: "engineer",
+    label: "電気工事士",
+    en: "ELECTRICIAN",
+    rows: [
+      {
+        label: "仕事内容",
+        value:
+          "一般電気工事、通信設備工事、電気土木工事、空調・衛生工事など幅広い工事業務。大型商業施設やマンションの新築・改修工事で、基幹設備構築から照明・コンセント・各種機械の施工を担当。",
+      },
+      { label: "応募資格", value: "高卒以上／普通自動車運転免許／未経験OK" },
+      {
+        label: "勤務地",
+        value:
+          "大阪工事事務所（本社）：大阪府東大阪市川俣1-6-10\nJR線「高井田中央」駅・大阪メトロ「高井田」駅徒歩5分／マイカー通勤可",
+      },
+      { label: "勤務時間", value: "1日8時間労働／現場により出勤時間変動" },
+      {
+        label: "手当",
+        value: "出張・資格・役職手当／インセンティブ制度／通勤手当全額支給",
+      },
+      { label: "雇用形態", value: "正社員" },
+      {
+        label: "福利厚生",
+        value: "社会保険完備／制服支給／資格支援制度　など…",
+      },
+    ],
+  },
+  {
+    key: "sales",
+    label: "営業",
+    en: "SALES",
+    rows: [
+      {
+        label: "仕事内容",
+        value:
+          "・ルート営業（既存の得意先への定期訪問）\n・新規営業（新たな得意先、協力企業を探す）",
+      },
+      {
+        label: "応募資格",
+        value: "・高卒以上\n・普通自動車運転免許\n・未経験OK",
+      },
+      { label: "勤務地", value: "大阪工事事務所（本社）：大阪府東大阪市川俣1-6-10" },
+      {
+        label: "勤務時間",
+        value: "フレックスタイムや変形労働など、ライフスタイルに合わせた勤務スタイルが可能",
+      },
+      {
+        label: "手当",
+        value: "出張手当、資格手当、役職手当など各種手当あり\n通勤手当：全額支給",
+      },
+      { label: "雇用形態", value: "正社員" },
+      {
+        label: "待遇・福利厚生",
+        value: "制服支給\n資格支援制度あり　など…",
+      },
+    ],
+  },
+] as const;
 
 const faqs = [
   {
@@ -854,6 +969,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ============ 募集要項 ============ */}
+      <RecruitSection />
 
       {/* ============ FAQ ============ */}
       <section className="section faq slant-t-down" id="faq">
