@@ -2,16 +2,15 @@ import Script from "next/script";
 import {
   GA4_MEASUREMENT_ID as GA4_ID,
   TIKTOK_PIXEL_ID as TIKTOK_ID,
-  META_PIXEL_ID as META_ID,
 } from "@/lib/constants";
 
 // 計測ベースコードをサイト全体（中間ページ含む）に設置する。
 // ClarityのIDはVercelの環境変数に入れるまでは未設定扱いとなり、
-// 何も出力しない。TikTok/Meta/GA4は発行済みのため既定値を直接設定している
-// （NEXT_PUBLIC_TIKTOK_PIXEL_ID / NEXT_PUBLIC_META_PIXEL_ID / NEXT_PUBLIC_GA4_ID
-// を設定すればそちらを優先する）。
+// 何も出力しない。TikTok/GA4は発行済みのため既定値を直接設定している
+// （NEXT_PUBLIC_TIKTOK_PIXEL_ID / NEXT_PUBLIC_GA4_ID を設定すればそちらを優先する）。
+// このLP(tecnes-lp-002)はMeta Pixelを設置しない
+// （Meta広告はtecnes-lp-004-metaで計測する）。
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID || TIKTOK_ID;
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || META_ID;
 const GA4_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_ID || GA4_ID;
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
@@ -28,35 +27,6 @@ export default function AnalyticsScripts() {
 }(window, document, 'ttq');
           `}
         </Script>
-      )}
-
-      {META_PIXEL_ID && (
-        <Script id="meta-pixel-base" strategy="afterInteractive">
-          {`
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${META_PIXEL_ID}');
-fbq('track', 'PageView');
-          `}
-        </Script>
-      )}
-      {META_PIXEL_ID && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <noscript>
-          <img
-            height={1}
-            width={1}
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
       )}
 
       {GA4_MEASUREMENT_ID && (

@@ -10,6 +10,3 @@ export const GA4_MEASUREMENT_ID = "G-XFM6VMMG9D";
 
 // TikTok Pixel ID
 export const TIKTOK_PIXEL_ID = "DBM1LO3C77U0QK5QFC30";
-
-// Meta Pixel ID
-export const META_PIXEL_ID = "1715418013254456";

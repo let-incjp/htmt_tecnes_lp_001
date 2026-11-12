@@ -1,6 +1,7 @@
 // 中間ページ(/line-thanks/)でのみ発火させるコンバージョンイベント。
 // ピクセルのベースコード読み込みが間に合わない場合に備え、
-// 短い間隔で最大約2秒まで ttq / fbq の存在確認をリトライしてから発火する。
+// 短い間隔で最大約2秒まで ttq の存在確認をリトライしてから発火する。
+// このLP(tecnes-lp-002)はMeta Pixelを設置しないため、Metaイベントは発火しない。
 
 declare global {
   interface Window {
@@ -8,7 +9,6 @@ declare global {
       track?: (...args: unknown[]) => void;
       [key: string]: unknown;
     };
-    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -33,17 +33,11 @@ function waitFor(
   });
 }
 
-// TikTok: Contact / Meta: Lead を中間ページ到達時に1回だけ発火する。
+// TikTok: Contact を中間ページ到達時に1回だけ発火する。
 export async function fireLineIntermediateConversionEvents() {
-  const [ttqReady, fbqReady] = await Promise.all([
-    waitFor(() => typeof window.ttq?.track === "function"),
-    waitFor(() => typeof window.fbq === "function"),
-  ]);
+  const ttqReady = await waitFor(() => typeof window.ttq?.track === "function");
 
   if (ttqReady) {
     window.ttq?.track?.("Contact");
-  }
-  if (fbqReady) {
-    window.fbq?.("track", "Lead");
   }
 }
